@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>京东商城 - 正品低价、品质保障、配送及时、轻松购物！</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 顶部导航栏 */
+        .top-bar {
+            background-color: #e4393c;
+            height: 30px;
+            line-height: 30px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .container {
+            width: 1190px;
+            margin: 0 auto;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* 头部区域 */
+        .header {
+            background-color: white;
+            padding: 20px 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 190px;
+            height: 60px;
+            background-color: #e4393c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .search-bar {
+            margin-left: 50px;
+            display: flex;
+            width: 550px;
+        }
+
+        .search-input {
+            width: 450px;
+            height: 36px;
+            padding: 0 10px;
+            border: 2px solid #e4393c;
+            outline: none;
+        }
+
+        .search-btn {
+            width: 100px;
+            height: 36px;
+            background-color: #e4393c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .hot-words {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .hot-words a {
+            color: #999;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .cart-box {
+            margin-left: auto;
+            width: 140px;
+            height: 36px;
+            border: 1px solid #e4e4e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e4393c;
+            font-size: 14px;
+        }
+
+        /* 主导航 */
+        .main-nav {
+            height: 40px;
+            background-color: #333;
+            color: white;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            height: 100%;
+        }
+
+        .nav-item {
+            padding: 0 20px;
+            line-height: 40px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background-color: #666;
+        }
+
+        /* 轮播图区域 */
+        .banner {
+            height: 340px;
+            margin-top: 10px;
+            display: flex;
+        }
+
+        .category-menu {
+            width: 190px;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            padding: 10px 0;
+        }
+
+        .category-item {
+            height: 30px;
+            line-height: 30px;
+            padding: 0 20px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            background-color: #e4393c;
+        }
+
+        .slider {
+            width: 790px;
+            height: 340px;
+            background-color: #ddd;
+            margin-left: 10px;
+        }
+
+        .side-promo {
+            width: 190px;
+            height: 340px;
+            margin-left: 10px;
+            background-color: white;
+        }
+
+        /* 秒杀区域 */
+        .seckill {
+            height: 260px;
+            background-color: white;
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        .seckill-header {
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+
+        .seckill-title {
+            color: #e4393c;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .countdown {
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .countdown-item {
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .countdown-split {
+            margin: 0 5px;
+        }
+
+        .seckill-more {
+            margin-left: auto;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .seckill-content {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .seckill-item {
+            width: 190px;
+            text-align: center;
+        }
+
+        .seckill-price {
+            color: #e4393c;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .seckill-old-price {
+            color: #999;
+            font-size: 12px;
+            text-decoration: line-through;
+        }
+
+        /* 商品楼层 */
+        .floor {
+            margin-top: 20px;
+        }
+
+        .floor-header {
+            height: 40px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #e4e4e4;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .floor-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e4393c;
+        }
+
+        .floor-tabs {
+            margin-left: 30px;
+            display: flex;
+        }
+
+        .floor-tab {
+            margin-right: 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .floor-tab.active {
+            color: #e4393c;
+        }
+
+        .floor-content {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: white;
+            padding: 10px;
+        }
+
+        .product-item {
+            width: 230px;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #f4f4f4;
+            cursor: pointer;
+        }
+
+        .product-item:hover {
+            border-color: #e4393c;
+        }
+
+        .product-img {
+            width: 210px;
+            height: 210px;
+            background-color: #f4f4f4;
+        }
+
+        .product-name {
+            margin-top: 10px;
+            font-size: 14px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            color: #e4393c;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #666;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .copyright {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="welcome">欢迎来到京东！</div>
+            <div class="top-links">
+                <a href="#">请登录</a>
+                <a href="#">免费注册</a>
+                <a href="#">我的订单</a>
+                <a href="#">会员中心</a>
+                <a href="#">客户服务</a>
+                <a href="#">网站导航</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 头部区域 -->
+    <div class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">京东</div>
+
+                <div class="search-box">
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="搜索商品">
+                        <button class="search-btn">搜索</button>
+                    </div>
+                    <div class="hot-words">
+                        <a href="#">手机</a>
+                        <a href="#">笔记本</a>
+                        <a href="#">空调</a>
+                        <a href="#">电视</a>
+                        <a href="#">洗衣机</a>
+                        <a href="#">冰箱</a>
+                        <a href="#">更多</a>
+                    </div>
+                </div>
+
+                <div class="cart-box">
+                    <span>我的购物车</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主导航 -->
+    <div class="main-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li class="nav-item">首页</li>
+                <li class="nav-item">服装城</li>
+                <li class="nav-item">美妆馆</li>
+                <li class="nav-item">超市</li>
+                <li class="nav-item">生鲜</li>
+                <li class="nav-item">全球购</li>
+                <li class="nav-item">闪购</li>
+                <li class="nav-item">拍卖</li>
+                <li class="nav-item">金融</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 轮播图区域 -->
+    <div class="container">
+        <div class="banner">
+            <div class="category-menu">
+                <div class="category-item">家用电器</div>
+                <div class="category-item">手机 / 运营商 / 数码</div>
+                <div class="category-item">电脑 / 办公</div>
+                <div class="category-item">家居 / 家具 / 家装 / 厨具</div>
+                <div class="category-item">男装 / 女装 / 童装 / 内衣</div>
+                <div class="category-item">美妆 / 个护清洁 / 宠物</div>
+                <div class="category-item">女鞋 / 箱包 / 钟表 / 珠宝</div>
+                <div class="category-item">男鞋 / 运动 / 户外</div>
+                <div class="category-item">房产 / 汽车 / 汽车用品</div>
+                <div class="category-item">母婴 / 玩具乐器</div>
+            </div>
+
+            <div class="slider"></div>
+
+            <div class="side-promo"></div>
+        </div>
+    </div>
+
+    <!-- 秒杀区域 -->
+    <div class="container">
+        <div class="seckill">
+            <div class="seckill-header">
+                <div class="seckill-title">京东秒杀</div>
+                <div class="countdown">
+                    <div class="countdown-item">10</div>
+                    <div class="countdown-split">:</div>
+                    <div class="countdown-item">20</div>
+                    <div class="countdown-split">:</div>
+                    <div class="countdown-item">30</div>
+                </div>
+                <div class="seckill-more">更多秒杀 ></div>
+            </div>
+
+            <div class="seckill-content">
+                <div class="seckill-item">
+                    <div class="product-img"></div>
+                    <div class="seckill-price">¥199</div>
+                    <div class="seckill-old-price">¥299</div>
+                </div>
+                <div class="seckill-item">
+                    <div class="product-img"></div>
+                    <div class="seckill-price">¥299</div>
+                    <div class="seckill-old-price">¥399</div>
+                </div>
+                <div class="seckill-item">
+                    <div class="product-img"></div>
+                    <div class="seckill-price">¥399</div>
+                    <div class="seckill-old-price">¥499</div>
+                </div>
+                <div class="seckill-item">
+                    <div class="product-img"></div>
+                    <div class="seckill-price">¥499</div>
+                    <div class="seckill-old-price">¥599</div>
+                </div>
+                <div class="seckill-item">
+                    <div class="product-img"></div>
+                    <div class="seckill-price">¥599</div>
+                    <div class="seckill-old-price">¥699</div>
+                </div>
+                <div class="seckill-item">
+                    <div class="product-img"></div>
+                    <div class="seckill-price">¥699</div>
+                    <div class="seckill-old-price">¥799</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 商品楼层 -->
+    <div class="container">
+        <div class="floor">
+            <div class="floor-header">
+                <div class="floor-title">家用电器</div>
+                <div class="floor-tabs">
+                    <div class="floor-tab active">热门</div>
+                    <div class="floor-tab">电视</div>
+                    <div class="floor-tab">空调</div>
+                    <div class="floor-tab">洗衣机</div>
+                    <div class="floor-tab">冰箱</div>
+                    <div class="floor-tab">厨卫大电</div>
+                    <div class="floor-tab">厨房小电</div>
+                </div>
+            </div>
+
+            <div class="floor-content">
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">海尔冰箱 双开门 大容量 节能静音</div>
+                    <div class="product-price">¥2999</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">美的空调 1.5匹 变频 冷暖 智能WiFi</div>
+                    <div class="product-price">¥2599</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">小米电视 55英寸 4K超高清 智能网络</div>
+                    <div class="product-price">¥1999</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">格力空调 3匹 变频 冷暖 立式柜机</div>
+                    <div class="product-price">¥5999</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">西门子洗衣机 10公斤 变频 滚筒</div>
+                    <div class="product-price">¥3999</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">九阳破壁机 多功能 静音 家用料理机</div>
+                    <div class="product-price">¥699</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">苏泊尔电饭煲 4L 智能预约 多功能</div>
+                    <div class="product-price">¥299</div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img"></div>
+                    <div class="product-name">戴森吸尘器 V8 Fluffy 无线手持</div>
+                    <div class="product-price">¥2999</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">联系我们</a>
+                <a href="#">人才招聘</a>
+                <a href="#">商家入驻</a>
+                <a href="#">广告服务</a>
+                <a href="#">手机京东</a>
+                <a href="#">友情链接</a>
+                <a href="#">销售联盟</a>
+                <a href="#">京东社区</a>
+                <a href="#">京东公益</a>
+                <a href="#">English Site</a>
+            </div>
+            <div class="copyright">
+                Copyright © 2004-2023 京东JD.com 版权所有
+            </div>
+        </div>
+    </div>
+</body>
+</html>
