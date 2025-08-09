@@ -154,7 +154,7 @@ async def get_cn_weather(adcode:Annotated[int,Field(description="根据输入的
     :return:
     """
     amap_url =f"{REST_API_AMAP_BASE}/v3/weather/weatherInfo?city={adcode}&key={AMAP_API_KEY}&extensions=all"
-    points_data = make_request(amap_url)
+    points_data = await make_request(amap_url)
     if points_data['info']=='OK':
         return get_format_cn_weather(points_data)
     return "无法获取最新天气数据"
@@ -162,7 +162,7 @@ async def get_cn_weather(adcode:Annotated[int,Field(description="根据输入的
 @mcp.tool()
 async def get_cn_adcode(keywords:Annotated[str,Field(description="获取输入城市的 adcode 值 ")])->Any:
     url = f"{REST_API_AMAP_BASE}/v3/config/district?keywords={keywords}&subdistrict=0&key={AMAP_API_KEY}"
-    ad_code_data = make_request(url)
+    ad_code_data = await make_request(url)
     if not ad_code_data or "districts" not in ad_code_data:
         return f"未查询到:{keywords} 对应的 adcode值 "
     return ad_code_data["districts"][0]["adcode"]
